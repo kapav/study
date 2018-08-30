@@ -10,6 +10,10 @@
 	width: 100%;
 }
 
+.video-cell {
+	width: 168px;
+}
+
 .play-button {
 	width: 100%;
 }
