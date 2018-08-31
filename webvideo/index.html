@@ -15,15 +15,15 @@
 			<div class="page-header">
 			  <h1>Webvideo program <small>Uploads and places video fragments</small></h1>
 			</div>
-			<form class="video-form">
+			<form id="vidForm" class="video-form">
 				<div class="form-group">
-					<label for="videoFileInput">Select video file</label>
+					<label for="vidInput">Select video file</label>
 					<input type="file" id="videoFileInput" class="video-input">
 					<p class="help-block">Select video file from local disk and press "Submit".</p>
 				 </div>	
 				 <div class="row">
 					<div class="col-xs-offset-9 col-xs-3">
-						<button type="submit" class="btn btn-primary video-button">Submit</button>
+						<button type="submit" id="vidSubmit" class="btn btn-primary video-button">Submit</button>
 					</div>
 				 </div>
 			</form>
@@ -35,7 +35,7 @@
 				<tr>
 					<th>Number</th>
 					<th>Videofile Name</th>
-					<th>Videofile itself</th>
+					<th>Videofile Itself</th>
 				</tr>
 			</table>	
 		</div>
