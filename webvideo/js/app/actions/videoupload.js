@@ -1,15 +1,13 @@
-window.onload = (function() {
+define(['lodash'], (_) => {
 	'use strict';
-	var $vidForm = $('#vidForm'),
-		$tableBody = $("#tableBody"),
-		rowTemplateFunc = _.template($('#rowTemplate').html()),
+	var	rowTemplateFunc = _.template($('#rowTemplate').html()),
 		currentCount = 1;
 		
 	function getCurrentCount() {
 		return currentCount++;
 	}
 		
-	function submitHandler(event) {
+	function videoUpload($vidForm, $tableBody, event) {
 		var files = event.target[0].files,
 			wrapper = document.getElementById('wrapper'),
 			video = null,
@@ -29,6 +27,6 @@ window.onload = (function() {
 		event.preventDefault();
 		$vidForm.trigger('reset');
 	}
-	
-	$vidForm.on('submit', submitHandler);
-})();
+		
+	return videoUpload;
+});

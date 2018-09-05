@@ -1,7 +1,6 @@
-window.onload = (function() {
+define(() => {
 	'use strict';
-	var $tableBody = $("#tableBody");
-	
+
 	function timeFormat(timeInSeconds) {
 		var reminderAfterHours = timeInSeconds % 3600,
 			hours = Math.round((timeInSeconds - reminderAfterHours) / 3600),
@@ -71,7 +70,7 @@ window.onload = (function() {
 		}
 	}
 		
-	function tableHandler(event) {
+	function videoPlay(event) {
 		var $target = $(event.target);
 		
 		if ($target.hasClass('play-button')) {
@@ -79,6 +78,6 @@ window.onload = (function() {
 			startHandler($target);
 		}
 	}
-
-	$tableBody.on('click', tableHandler);
-})();
+	
+	return videoPlay;
+});
