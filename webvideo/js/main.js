@@ -1,6 +1,6 @@
 window.onload = (function() {
 	'use strict';
-	var $tableLayout = $("#tableLayout");
+	var $tableBody = $("#tableBody");
 	
 	function timeFormat(timeInSeconds) {
 		var reminderAfterHours = timeInSeconds % 3600,
@@ -80,5 +80,5 @@ window.onload = (function() {
 		}
 	}
 
-	$tableLayout.on('click', tableHandler);
+	$tableBody.on('click', tableHandler);
 })();

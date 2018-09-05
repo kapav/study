@@ -1,53 +1,34 @@
 window.onload = (function() {
 	'use strict';
 	var $vidForm = $('#vidForm'),
-		$vidInput = $('#videoFileInput'),
-		$vidSubmit = $('#vidSubmit'),
-		folder = "video/",
-		$tableLayout = $("#tableLayout"),
-		rowTemplateFunc = _.template($('#rowTemplate').html());
+		$tableBody = $("#tableBody"),
+		rowTemplateFunc = _.template($('#rowTemplate').html()),
+		currentCount = 1;
 		
-	$tableLayout.append(
-		rowTemplateFunc({
-			indexOfRow: 100,
-			folder: folder,
-			filename: 'MP4_big_buck_bunny.mp4'
-		})
-	);
-	
+	function getCurrentCount() {
+		return currentCount++;
+	}
+		
 	function submitHandler(event) {
 		var files = event.target[0].files,
 			wrapper = document.getElementById('wrapper'),
-			video = null;
+			video = null,
+			source = null,
+			i;
+		
+		for (i = 0; i < files.length; i++) {
+			$tableBody.append(
+				rowTemplateFunc({
+					indexOfRow: getCurrentCount(),
+					blob: window.URL.createObjectURL(files[i]),
+					filename: files[i].name
+				})
+			);
+		}
 		
 		event.preventDefault();
-
-		// Loop through the FileList and render image files as thumbnails.
-		for (var i = 0, f; f = files[i]; i++) {
-			video = document.createElement('video');
-				
-			video.innerHTML = [
-				'<video height="150"><source src="',
-				window.URL.createObjectURL(f),
-				'">The video tag is not supported</video>'
-			].join('');
-			wrapper.append(video);
-		}
+		$vidForm.trigger('reset');
 	}
 	
 	$vidForm.on('submit', submitHandler);
-	
-	$.ajax({
-		url: folder,
-		success: function (data) {
-			$(data).find('a').attr('href', function(indexOfRow, filename) {
-				var html = rowTemplateFunc({
-					indexOfRow: indexOfRow,
-					folder: folder,
-					filename: filename
-				});
-				$tableLayout.append(html);
-			});
-		}
-	});
 })();

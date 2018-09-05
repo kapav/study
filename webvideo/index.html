@@ -30,83 +30,47 @@
 		</div>
 	</header>
 	<main>
-		<div id="wrapper" class="container-fluid">
-			<table id="tableLayout" class="table table-bordered">
-				<tr>
-					<th>Number</th>
-					<th>Videofile Name</th>
-					<th>Videofile Itself</th>
-					<th>Start/Pause</th>
-					<th>Progress Bar</th>
-				</tr>
-				<tr>
-					<td id="td-number td-vertical-middle">100</td>
-					<td class="td-video-name td-vertical-middle">MP4_big_buck_bunny.mp4</td>
-					<td class="td-video-cell">
-						<video class="video-elem" height="150">
-							<source src="video/MP4_big_buck_bunny.mp4">
-							The video tag is not supported by your browser
-						</video>
-					</td>
-					<td class="td-video-control td-vertical-middle">
-						<button type="button" class="btn btn-success play-button">Start</button>
-					</td>
-					<td class="td-video-progress td-vertical-middle">
-						<div class="progress margin-adjust">
-							<div class="progress-bar progress-bar-info play-progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%; color: #f00;">
-								0:00:00
-							</div>
-						</div>			
-					</td>
-				</tr>
-				<tr>
-					<td id="td-number td-vertical-middle">101</td>
-					<td class="td-video-name td-vertical-middle">OGG_big_buck_bunny.ogv</td>
-					<td class="td-video-cell">
-						<video class="video-elem" height="150">
-							<source src="OGG_big_buck_bunny.ogv">
-							The video tag is not supported by your browser
-						</video>
-					</td>
-					<td class="td-video-control td-vertical-middle">
-						<button type="button" class="btn btn-success play-button">Start</button>
-					</td>
-					<td class="td-video-progress td-vertical-middle">
-						<div class="progress margin-adjust">
-							<div class="progress-bar progress-bar-info play-progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%; color: #f00;">
-								0:00:00
-							</div>
-						</div>			
-					</td>
-				</tr>
+		<div class="container-fluid">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Number</th>
+						<th>Videofile Name</th>
+						<th>Videofile Itself</th>
+						<th>Start/Pause</th>
+						<th>Progress Bar</th>
+					</tr>
+				</thead>
+				<tbody id="tableBody">
+				</tbody>
 			</table>	
 		</div>
 	</main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
-<!--	<script id="rowTemplate" type="text/template">
+	<script id="rowTemplate" type="text/template">
 		<tr>
 			<td id="td-number td-vertical-middle"><%=indexOfRow%></td>
 			<td class="td-video-name td-vertical-middle"><%=filename%></td>
 			<td class="td-video-cell">
-				<video controls height="150">
-					<source src="<%=folder + filename%>">
+				<video height="150">
+					<source src="<%=blob%>">
 					The video tag is not supported by your browser
 				</video>
 			</td>
 			<td class="td-video-control td-vertical-middle">
-				<button type="button" class="btn btn-success video-play">Play</button>
+				<button type="button" class="btn btn-success play-button">Start</button>
 			</td>
 			<td class="td-video-progress td-vertical-middle">
 				<div class="progress margin-adjust">
-					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-						60%
+					<div class="progress-bar progress-bar-info play-progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%; color: #f00;">
+						0:00:00
 					</div>
 				</div>			
 			</td>
 		</tr>
-	</script>-->
+	</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/fileupload.js"></script>
 </body>
