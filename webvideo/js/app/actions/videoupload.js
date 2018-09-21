@@ -1,4 +1,4 @@
-define(['lodash'], (_) => {
+define(['jquery', 'lodash'], ($, _) => {
 	'use strict';
 	var	rowTemplateFunc = _.template($('#rowTemplate').html()),
 		currentCount = 1;
