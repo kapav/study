@@ -1,4 +1,4 @@
-requirejs.config({
+/*require.config({
     'baseUrl': 'js/lib',
     'paths': {
         'app': '../app',
@@ -8,4 +8,4 @@ requirejs.config({
     }
 });
 
-requirejs(['app/main']);
+require(['app/main']);*/
