@@ -1,3 +1,7 @@
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
 .video-form {
 	margin-bottom: 30px;
 }

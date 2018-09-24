@@ -1,25 +1,30 @@
-/*define(['jquery', 'lodash'], ($, _) => {
-	'use strict';*/
-import $ from 'jquery';
 import _ from 'lodash';
-const rowTemplateFunc = _.template($('#rowTemplate').html());
-let	currentCount = 1;
+const rowTemplate = document.getElementById('rowTemplate');
+const rowTemplateFunc = _.template(rowTemplate.innerHTML);
+let currentRowNumber = 1;
 	
-function getCurrentCount() {
-	return currentCount++;
+/**
+* Increments the row number in the videomovie table and returns the current number
+* @return {integer} the current row number
+**/	
+function incrementRowNumber() {
+	return currentRowNumber++;
 }
 	
-function videoUpload($vidForm, $tableBody, event) {
-	var files = event.target[0].files,
-		wrapper = document.getElementById('wrapper'),
-		video = null,
-		source = null,
-		i;
+/**
+* Uploads a videomovie to the videomovie table
+* @param {Object} vidForm is the videomovie input form
+* @param {Object} tableBody is the body of the videomovie table
+* @param {Object} event is the 'submit' event of the videomovie input form
+**/	
+function videoUpload(vidForm, tableBody, event) {
+	const files = event.target[0].files;
+	let	resetVidFormEvent = null;
 	
-	for (i = 0; i < files.length; i++) {
-		$tableBody.append(
+	for (let i = 0; i < files.length; i++) {
+		tableBody.insertAdjacentHTML('beforeEnd',
 			rowTemplateFunc({
-				indexOfRow: getCurrentCount(),
+				indexOfRow: incrementRowNumber(),
 				blob: window.URL.createObjectURL(files[i]),
 				filename: files[i].name
 			})
@@ -27,10 +32,10 @@ function videoUpload($vidForm, $tableBody, event) {
 	}
 	
 	event.preventDefault();
-	$vidForm.trigger('reset');
+	
+	resetVidFormEvent = document.createEvent('HTMLEvents');
+	resetVidFormEvent.initEvent('reset', false, true);
+	vidForm.dispatchEvent(resetVidFormEvent);
 }
 
 export default videoUpload;
-		
-/*	return videoUpload;
-});*/

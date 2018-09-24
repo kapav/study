@@ -1,16 +1,18 @@
-/*require(['jquery', 'actions/videoplay', 'actions/videoupload'], ($, videoPlay, videoUpload) => {
-    'use strict';*/
-import $ from 'jquery';
 import videoPlay from './actions/videoplay';
 import videoUpload from './actions/videoupload';
-const $vidForm = $('#vidForm');
-const $tableBody = $("#tableBody");
 	
-window.onload = (function() {
-	$vidForm.on(
+/**
+* Performs the initial loading of the page
+**/	
+function bootstrap() {
+	const vidForm = document.getElementById('vidForm');
+	const tableBody = document.getElementById('tableBody');
+	
+	vidForm.addEventListener(
 		'submit',
-		videoUpload.bind(null, $vidForm, $tableBody)
+		videoUpload.bind(null, vidForm, tableBody)
 	);
-	$tableBody.on('click', videoPlay);
-})();
-/*});*/
+	tableBody.addEventListener('click', videoPlay);
+}
+	
+window.onload = bootstrap();

@@ -1,5 +1,3 @@
-/*define(() => {
-	'use strict';*/
 import $ from 'jquery';
 
 function timeFormat(timeInSeconds) {
@@ -41,9 +39,9 @@ function videoInialize($startButton) {
 	
 	playerInitialize($startButton, $progressBar);
 	$video
-		.off('timeupdate')
+		.off('timeupdate', timeupdateHandler)
 		.on('timeupdate', timeupdateHandler.bind(null, $video, $progressBar))
-		.off('ended')
+		.off('ended', endedHandler)
 		.on('ended', endedHandler.bind(null, $startButton, $progressBar, $video));
 }
 
@@ -81,6 +79,3 @@ function videoPlay(event) {
 }
 
 export default videoPlay;
-	
-/*	return videoPlay;
-});*/
