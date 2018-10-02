@@ -12,69 +12,72 @@ function timeFormat(timeInSeconds) {
 	return `${hours}:${minutes}:${seconds}`;
 }
 
-function playerInitialize($startButton, $progressBar) {
-	$startButton.html('Start');
-	$startButton
-		.removeClass('btn-success btn-warning btn-danger')
-		.addClass('btn-success');
-	$progressBar.attr('style', 'width: 0%; color: #f00;');
-	$progressBar.html('0:00:00');
+function playerInitialize(startButton, progressBar) {
+	startButton.innerHTML = 'Start';
+	startButton.classList.remove('btn-success', 'btn-warning', 'btn-danger');
+	startButton.classList.add('btn-success');
+	progressBar.setAttribute('style', 'width: 0%; color: #f00;');
+	progressBar.innerHTML = '0:00:00';
 }
 	
-function timeupdateHandler($video, $progressBar) {
-	var currentTimeOfVideo = $video[0].currentTime;
+function timeupdateHandler(video, progressBar) {
+	const currentTimeOfVideo = video.currentTime;
+	const durationOfVideo = video.duration;
 	
-	$progressBar.attr('style', `width: ${Math.round(100 * currentTimeOfVideo / $video[0].duration)}%; color: #f00;`);
-	$progressBar.html(timeFormat(currentTimeOfVideo));
+	progressBar.setAttribute('style', `width: ${Math.round(100 * currentTimeOfVideo / durationOfVideo)}%; color: #f00;`);
+	progressBar.innerHTML = timeFormat(currentTimeOfVideo);
 }
 
-function endedHandler($startButton, $progressBar, $video) {
-	playerInitialize($startButton, $progressBar);
-	$video[0].fastSeek(0);
+function endedHandler(startButton, progressBar, video) {
+	playerInitialize(startButton, progressBar);
+	video.fastSeek(0);
 }
 
-function videoInialize($startButton) {
-	var $progressBar = $startButton.closest('tr').find('.play-progress-bar'),
-		$video = $startButton.closest('tr').find('video');
+function videoInialize(startButton) {
+	const progressBarElem = startButton
+		.parentElement.parentElement
+		.getElementsByClassName('play-progress-bar')[0];
+	const videoElem = startButton
+		.parentElement.parentElement
+		.getElementsByTagName('video')[0];
 	
-	playerInitialize($startButton, $progressBar);
-	$video
-		.off('timeupdate', timeupdateHandler)
-		.on('timeupdate', timeupdateHandler.bind(null, $video, $progressBar))
-		.off('ended', endedHandler)
-		.on('ended', endedHandler.bind(null, $startButton, $progressBar, $video));
+	playerInitialize(startButton, progressBarElem);
+	videoElem.removeEventListener('timeupdate', timeupdateHandler);
+	videoElem.addEventListener('timeupdate',
+			timeupdateHandler.bind(null, videoElem, progressBarElem));
+	videoElem.removeEventListener('ended', endedHandler);
+	videoElem.addEventListener('ended',
+			endedHandler.bind(null, startButton, progressBarElem, videoElem));
 }
 
-function startHandler($startButton) {
-	var	htmlOfButton = $startButton.html(),
-		$video = $startButton.closest('tr').find('video'),
-		durationOfVideo = $video.duration,
-		startPositionFlag = true;
+function startHandler(startButton) {
+	const htmlOfButton = startButton.innerHTML;
+	const videoElem = startButton
+		.parentElement.parentElement
+		.getElementsByTagName('video')[0];
+	const durationOfVideo = videoElem.duration;
 		
-	if (!$video[0].error) {
-		if ($video[0].paused) {
-			if (startPositionFlag)
-			$startButton
-				.removeClass('btn-success btn-warning btn-danger')
-				.addClass('btn-danger');
-			$startButton.html('Pause');
-			$video[0].play();
+	if (!videoElem.error) {
+		if (videoElem.paused) {
+			startButton.classList.remove('btn-success', 'btn-warning', 'btn-danger');
+			startButton.classList.add('btn-danger');
+			startButton.innerHTML = 'Pause';
+			videoElem.play();
 		} else {
-			$startButton
-				.removeClass('btn-success btn-warning btn-danger')
-				.addClass('btn-warning');
-			$startButton.html('Resume');
-			$video[0].pause();
+			startButton.classList.remove('btn-success', 'btn-warning', 'btn-danger');
+			startButton.classList.add('btn-warning');
+			startButton.innerHTML = 'Resume';
+			videoElem.pause();
 		}
 	}
 }
 	
 function videoPlay(event) {
-	var $target = $(event.target);
+	var target = event.target;
 	
-	if ($target.hasClass('play-button')) {
-		videoInialize($target);
-		startHandler($target);
+	if (target.classList.contains('play-button')) {
+		videoInialize(target);
+		startHandler(target);
 	}
 }
 
