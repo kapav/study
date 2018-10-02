@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 function timeFormat(timeInSeconds) {
 	var reminderAfterHours = timeInSeconds % 3600,
 		hours = Math.round((timeInSeconds - reminderAfterHours) / 3600),
