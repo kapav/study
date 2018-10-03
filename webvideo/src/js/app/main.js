@@ -1,12 +1,12 @@
-import videoPlay from './actions/videoplay';
-import videoUpload from './actions/videoupload';
+//var videoPlay = require('./actions/videoplay');
+//var videoUpload = require('./actions/videoupload');
 	
 /**
 * Performs the initial loading of the page
 **/	
 function bootstrap() {
-	const vidForm = document.getElementById('vidForm');
-	const tableBody = document.getElementById('tableBody');
+	var vidForm = document.getElementById('vidForm');
+	var tableBody = document.getElementById('tableBody');
 	
 	vidForm.addEventListener(
 		'submit',

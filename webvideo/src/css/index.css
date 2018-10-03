@@ -1,0 +1,43 @@
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+.video-form {
+	margin-bottom: 30px;
+}
+
+.video-input {
+	width: 100%;
+}
+
+.margin-adjust {
+	margin-bottom: 0;
+}
+
+.video-button {
+	width: 100%;
+}
+
+.td-number {
+	width: 7%;
+}
+
+.td-video-name {
+	width: 15%;
+}
+
+.td-video-control {
+	width: 5%;
+}
+
+.td-video-cell {
+	width: 168px;
+}
+
+.td-video-progress {
+	width: 40%;
+}
+
+.play-button {
+	width: 100%;
+}

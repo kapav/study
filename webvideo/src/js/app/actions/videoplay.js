@@ -7,7 +7,7 @@ function timeFormat(timeInSeconds) {
 		
 	minutes = ('00' + minutes).slice(-2);
 	seconds = ('00' + seconds).slice(-2);
-	return `${hours}:${minutes}:${seconds}`;
+	return hours + ':' + minutes + ':' + seconds;
 }
 
 function playerInitialize(startButton, progressBar) {
@@ -19,10 +19,10 @@ function playerInitialize(startButton, progressBar) {
 }
 	
 function timeupdateHandler(video, progressBar) {
-	const currentTimeOfVideo = video.currentTime;
-	const durationOfVideo = video.duration;
+	var currentTimeOfVideo = video.currentTime;
+	var durationOfVideo = video.duration;
 	
-	progressBar.setAttribute('style', `width: ${Math.round(100 * currentTimeOfVideo / durationOfVideo)}%; color: #f00;`);
+	progressBar.setAttribute('style', 'width: ' + Math.round(100 * currentTimeOfVideo / durationOfVideo) + '%; color: #f00;');
 	progressBar.innerHTML = timeFormat(currentTimeOfVideo);
 }
 
@@ -32,10 +32,10 @@ function endedHandler(startButton, progressBar, video) {
 }
 
 function videoInialize(startButton) {
-	const progressBarElem = startButton
+	var progressBarElem = startButton
 		.parentElement.parentElement
 		.getElementsByClassName('play-progress-bar')[0];
-	const videoElem = startButton
+	var videoElem = startButton
 		.parentElement.parentElement
 		.getElementsByTagName('video')[0];
 	
@@ -49,11 +49,11 @@ function videoInialize(startButton) {
 }
 
 function startHandler(startButton) {
-	const htmlOfButton = startButton.innerHTML;
-	const videoElem = startButton
+	var htmlOfButton = startButton.innerHTML;
+	var videoElem = startButton
 		.parentElement.parentElement
 		.getElementsByTagName('video')[0];
-	const durationOfVideo = videoElem.duration;
+	var durationOfVideo = videoElem.duration;
 		
 	if (!videoElem.error) {
 		if (videoElem.paused) {
@@ -79,4 +79,4 @@ function videoPlay(event) {
 	}
 }
 
-export default videoPlay;
+//export default videoPlay;
