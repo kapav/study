@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="webVideoApp">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="../dist/css/index.css">
 </head>
-<body>
+<body ng-controller="webVideoController">
 	<header>
 		<div class="container-fluid">
 			<div class="page-header">
@@ -16,8 +16,8 @@
 			</div>
 			<form action="" id="vidForm" class="video-form" accept-charset="utf-8">
 				<div class="form-group">
-					<label for="ngNameInput">Type a sample name:</label>
-					<input type="text" id="ngNameInput" ng-model="videofileupload" placeholder="Type any name">
+					<label for="nameInput">Type a sample name:</label>
+					<input type="text" id="nameInput" ng-model="videoUploadName" placeholder="Type any name">
 				</div>
 				<div class="form-group">
 					<label for="videoFileInput">Select video file</label>
@@ -34,7 +34,7 @@
 	</header>
 	<main>
 		<div class="container-fluid">
-			<p>Welcome, {{videofileupload}}!</p>
+			<p>Welcome, {{videoUploadName}}!</p>
 			<table class="table table-bordered">
 				<thead>
 					<tr>

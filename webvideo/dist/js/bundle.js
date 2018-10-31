@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/app/main.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -152,6 +152,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var loda
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _actions_videoupload__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actions/videoupload */ \"./src/js/app/actions/videoupload.js\");\n/* harmony import */ var _actions_videoplay__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions/videoplay */ \"./src/js/app/actions/videoplay.js\");\n//var videoPlay = require('./actions/videoplay');\r\n//var videoUpload = require('./actions/videoupload');\r\n\r\n\r\n\r\n\t\r\n/**\r\n* Performs the initial loading of the page\r\n**/\t\r\nfunction bootstrap() {\r\n\tvar vidForm = document.getElementById('vidForm');\r\n\tvar tableBody = document.getElementById('tableBody');\r\n\t\r\n\tvidForm.addEventListener(\r\n\t\t'submit',\r\n\t\t_actions_videoupload__WEBPACK_IMPORTED_MODULE_0__[\"default\"].bind(null, vidForm, tableBody)\r\n\t);\r\n\ttableBody.addEventListener('click', _actions_videoplay__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\r\n}\r\n\t\r\nwindow.onload = bootstrap();\r\n\n\n//# sourceURL=webpack:///./src/js/app/main.js?");
+
+/***/ }),
+
+/***/ "./src/js/app/modules/webVideoApp.js":
+/*!*******************************************!*\
+  !*** ./src/js/app/modules/webVideoApp.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst webVideoApp = angular.module('webVideoApp', []);\r\n\r\nwebVideoApp.controller('webVideoController', function($scope) {\r\n});\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (webVideoApp);\r\n\n\n//# sourceURL=webpack:///./src/js/app/modules/webVideoApp.js?");
+
+/***/ }),
+
+/***/ 0:
+/*!**********************************************************************!*\
+  !*** multi ./src/js/app/main.js ./src/js/app/modules/webVideoApp.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("__webpack_require__(/*! ./src/js/app/main.js */\"./src/js/app/main.js\");\nmodule.exports = __webpack_require__(/*! ./src/js/app/modules/webVideoApp.js */\"./src/js/app/modules/webVideoApp.js\");\n\n\n//# sourceURL=webpack:///multi_./src/js/app/main.js_./src/js/app/modules/webVideoApp.js?");
 
 /***/ })
 
