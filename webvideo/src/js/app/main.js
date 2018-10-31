@@ -9,7 +9,7 @@ import videoPlay from './actions/videoplay';
 **/	
 function bootstrap() {
 	var vidForm = document.getElementById('vidForm');
-	var tableBody = document.getElementById('tableBody');
+	var tableBody = document.getElementById('tableBodyMovie');
 	
 	vidForm.addEventListener(
 		'submit',

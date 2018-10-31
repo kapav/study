@@ -12,5 +12,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist', 'js'),
     filename: 'bundle.js'
-  }	
+  },
+  watchOptions: {
+    ignored: ['node_modules', 'bower_components', 'dist', 'src/*.html']
+  }
 }
