@@ -1,5 +1,8 @@
 //var videoPlay = require('./actions/videoplay');
 //var videoUpload = require('./actions/videoupload');
+
+import videoUpload from './actions/videoupload';
+import videoPlay from './actions/videoplay';
 	
 /**
 * Performs the initial loading of the page

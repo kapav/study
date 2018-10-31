@@ -1,4 +1,5 @@
 //var _ = require('lodash');
+import _ from 'lodash';
 var rowTemplate = document.getElementById('rowTemplate');
 var rowTemplateFunc = _.template(rowTemplate.innerHTML);
 var currentRowNumber = 1;
@@ -18,7 +19,7 @@ function incrementRowNumber() {
 * @param {Object} event is the 'submit' event of the videomovie input form
 **/	
 function videoUpload(vidForm, tableBody, event) {
-	var files = event.target[0].files;
+	var files = event.target.videoFileInput.files;
 	var	resetVidFormEvent = null;
 	
 	for (var i = 0; i < files.length; i++) {
@@ -38,4 +39,4 @@ function videoUpload(vidForm, tableBody, event) {
 	vidForm.dispatchEvent(resetVidFormEvent);
 }
 
-//export default videoUpload;
+export default videoUpload;

@@ -79,4 +79,4 @@ function videoPlay(event) {
 	}
 }
 
-//export default videoPlay;
+export default videoPlay;

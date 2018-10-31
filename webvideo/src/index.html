@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,10 @@
 			</div>
 			<form action="" id="vidForm" class="video-form" accept-charset="utf-8">
 				<div class="form-group">
+					<label for="ngNameInput">Type a sample name:</label>
+					<input type="text" id="ngNameInput" ng-model="videofileupload" placeholder="Type any name">
+				</div>
+				<div class="form-group">
 					<label for="videoFileInput">Select video file</label>
 					<input type="file" multiple id="videoFileInput" class="video-input">
 					<p class="help-block">Select video file from local disk and press "Submit".</p>
@@ -30,6 +34,7 @@
 	</header>
 	<main>
 		<div class="container-fluid">
+			<p>Welcome, {{videofileupload}}!</p>
 			<table class="table table-bordered">
 				<thead>
 					<tr>
@@ -68,6 +73,7 @@
 		</tr>
 	</script>
 <!--<script data-main="js/config" src="js/lib/require.js"></script>-->
-	<script src="../dist/js/web-video.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+	<script src="../dist/js/bundle.js"></script>
 </body>
 </html>
