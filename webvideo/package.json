@@ -4,6 +4,7 @@
   "description": "Upload of the video files",
   "dependencies": {},
   "devDependencies": {
+    "css-loader": "1.0.1",
     "grunt": "1.0.3",
     "grunt-contrib-concat": "1.0.1",
     "grunt-contrib-jshint": "2.0.0",
@@ -16,6 +17,7 @@
     "karma-jasmine": "1.1.2",
     "load-grunt-tasks": "4.0.0",
     "lodash": "4.17.11",
+    "mini-css-extract-plugin": "0.4.5",
     "rimraf": "2.6.2",
     "webpack": "4.26.1",
     "webpack-cli": "3.1.2",
