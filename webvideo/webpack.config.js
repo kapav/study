@@ -3,6 +3,8 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 console.log('NODE_ENV', NODE_ENV);
 module.exports = {
@@ -12,10 +14,9 @@ module.exports = {
 	  webVideoApp: './src/js/app/modules/webVideoApp.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist', 'js'),
-	publicPath: path.resolve(__dirname, 'dist', 'js') + '/',
-    filename: '[name].bundle.js',
-	library: '[name]'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].bundle.js',
+	library: 'myLibrary'
   },
   watchOptions: {
     ignored: ['node_modules', 'bower_components', 'dist', 'src/*.html']
@@ -26,11 +27,13 @@ module.exports = {
 		{
 			test: /\.css$/,
 			use: [
-				{
-					loader: MiniCssExtractPlugin.loader
-				},
+				MiniCssExtractPlugin.loader,
 				'css-loader'
 			]
+		},
+		{
+			test: /\.html$/,
+			use: 'raw-loader'
 		}
 	  ]
   },
@@ -39,7 +42,11 @@ module.exports = {
 		NODE_ENV: JSON.stringify(NODE_ENV)
 	}),
 	new MiniCssExtractPlugin({
-		filename: '../css/[name].css'
+		filename: 'css/[name].css'
+	}),
+	new CleanWebpackPlugin(['dist']),
+	new HtmlWebpackPlugin({
+		template: './src/index.html'
 	})
   ]
 }
