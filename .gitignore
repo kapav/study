@@ -1,14 +1,14 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/bower_components
+/webvideo/node_modules
+/webvideo/bower_components
 
 # testing
-/coverage
+/webvideo/coverage
 
 # production
-/dist
+/webvideo/dist
 
 # misc
 .DS_Store
