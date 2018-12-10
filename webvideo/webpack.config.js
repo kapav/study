@@ -15,8 +15,12 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
+	publicPath: '/',
     filename: 'js/[name].bundle.js',
 	library: 'myLibrary'
+  },
+  devServer: {
+	  contentBase: './dist'
   },
   watchOptions: {
     ignored: ['node_modules', 'bower_components', 'dist', 'src/*.html']
